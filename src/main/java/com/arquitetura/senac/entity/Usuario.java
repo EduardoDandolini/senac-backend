@@ -1,8 +1,11 @@
 package com.arquitetura.senac.entity;
 
+import jakarta.persistence.OneToMany;
 import lombok.*;
+import org.hibernate.boot.model.source.spi.EmbeddableMapping;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,4 +20,13 @@ public class Usuario extends BaseEntity {
     private LocalDate dataDeNascimento;
     private String endereco;
     private String telefone;
+    @OneToMany(mappedBy = "emprestimo")
+    private List<Emprestimo> emprestimos;
+
+
+
+
+
+
+
 }

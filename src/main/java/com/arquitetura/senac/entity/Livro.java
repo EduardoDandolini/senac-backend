@@ -3,6 +3,8 @@ package com.arquitetura.senac.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,6 +15,7 @@ public class Livro extends BaseEntity {
 
     private String nome;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "autor_id")
     private Autor autor;
     private String editora;
     private String genero;
@@ -31,5 +34,8 @@ public class Livro extends BaseEntity {
             this.nome = nome;
         }
     }
+
+    @OneToMany(mappedBy = "livro")
+    private List<Emprestimo> emprestimos;
 
 }
