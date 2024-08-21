@@ -1,9 +1,9 @@
 package com.arquitetura.senac.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +15,11 @@ public class Livro extends BaseEntity{
 
     private String nome;
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "autor_id")
     private Autor autor;
     private String editora;
     private String genero;
+    @OneToMany(mappedBy = "livro")
+    private List<Emprestimo> emprestimos;
+
 }
