@@ -34,7 +34,8 @@ public class Livro extends BaseEntity {
 
     public enum Status {
         DISPONIVEL(1L, "Disponível"),
-        INDISPONIVEL(2L, "Indisponível");
+        INDISPONIVEL(2L, "Indisponível"),
+        VENCIDO(3L, "Vencido");
 
         private Long id;
         private String nome;

@@ -1,5 +1,6 @@
 package com.arquitetura.senac.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.*;
@@ -19,8 +20,11 @@ public class Usuario extends BaseEntity {
 
     private String email;
 
+    private String senha;
+
     private String cpf;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeNascimento;
 
     private String endereco;
