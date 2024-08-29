@@ -1,5 +1,6 @@
 package com.arquitetura.senac.entity;
 
+import enuns.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,19 +32,5 @@ public class Livro extends BaseEntity {
 
     @OneToMany(mappedBy = "livro")
     private List<Reserva> reservas;
-
-    public enum Status {
-        DISPONIVEL(1L, "Disponível"),
-        INDISPONIVEL(2L, "Indisponível"),
-        VENCIDO(3L, "Vencido");
-
-        private Long id;
-        private String nome;
-
-        Status(Long id, String nome) {
-            this.id = id;
-            this.nome = nome;
-        }
-    }
 
 }
