@@ -4,6 +4,7 @@ import com.arquitetura.senac.dto.LivroDto;
 import com.arquitetura.senac.entity.Autor;
 import com.arquitetura.senac.entity.Livro;
 import com.arquitetura.senac.repository.LivroRepository;
+import enuns.Status;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class LivroService {
                // .autor(Autor.builder().id(dto.autorId()).build())
                 .editora(dto.editora())
                 .genero(dto.genero())
-                .status(Livro.Status.valueOf(dto.status().name()))
+                .status(Status.valueOf(dto.status().name()))
                 .build();
         return repository.save(livro);
     }
@@ -44,7 +45,7 @@ public class LivroService {
       //  livro.setAutor(Autor.builder().id(dto.autorId()).build());
         livro.setEditora(dto.editora());
         livro.setGenero(dto.genero());
-        livro.setStatus(Livro.Status.valueOf(dto.status().name()));
+        livro.setStatus(Status.valueOf(dto.status().name()));
 
         return repository.save(livro);
     }

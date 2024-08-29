@@ -1,7 +1,9 @@
 package com.arquitetura.senac.dto;
 
+import enuns.Status;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
 import java.util.List;
 
 public record LivroDto(
@@ -19,16 +21,6 @@ public record LivroDto(
         String genero,
 
         @NotNull(message = "Status é obrigatório")
-        Status status,
-
-        List<Long> emprestimosIds,
-
-        List<Long> reservasIds
+        Status status
 ) {
-
-    public enum Status {
-        DISPONIVEL,
-        INDISPONIVEL,
-        VENCIDO
-    }
 }
