@@ -1,6 +1,6 @@
 package com.arquitetura.senac.entity;
 
-import enuns.Status;
+import com.arquitetura.senac.enuns.Status;
 import jakarta.persistence.*;
 import lombok.*;
 

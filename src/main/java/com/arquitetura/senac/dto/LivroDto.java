@@ -1,10 +1,8 @@
 package com.arquitetura.senac.dto;
 
-import enuns.Status;
+import com.arquitetura.senac.enuns.Status;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
-import java.util.List;
 
 public record LivroDto(
 

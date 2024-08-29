@@ -1,10 +1,9 @@
 package com.arquitetura.senac.service;
 
 import com.arquitetura.senac.dto.LivroDto;
-import com.arquitetura.senac.entity.Autor;
 import com.arquitetura.senac.entity.Livro;
 import com.arquitetura.senac.repository.LivroRepository;
-import enuns.Status;
+import com.arquitetura.senac.enuns.Status;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

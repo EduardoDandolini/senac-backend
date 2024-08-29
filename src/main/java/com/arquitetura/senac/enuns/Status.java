@@ -1,4 +1,4 @@
-package enuns;
+package com.arquitetura.senac.enuns;
 
 public enum Status {
 
