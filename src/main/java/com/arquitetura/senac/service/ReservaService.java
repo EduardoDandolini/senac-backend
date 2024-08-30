@@ -4,7 +4,6 @@ import com.arquitetura.senac.dto.ReservaDto;
 import com.arquitetura.senac.entity.Emprestimo;
 import com.arquitetura.senac.entity.Livro;
 import com.arquitetura.senac.entity.Reserva;
-import com.arquitetura.senac.entity.Usuario;
 import com.arquitetura.senac.enuns.Status;
 import com.arquitetura.senac.repository.EmprestimoRepository;
 import com.arquitetura.senac.repository.LivroRepository;
@@ -19,7 +18,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ReservaService {
 
-    private final ReservaRepository reservaRepository;
     private final LivroRepository livroRepository;
     private final EmprestimoRepository emprestimoRepository;
 
