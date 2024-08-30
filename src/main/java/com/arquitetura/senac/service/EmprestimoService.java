@@ -1,8 +1,7 @@
 package com.arquitetura.senac.service;
 
-import com.arquitetura.senac.Exception.LivrariaException;
+import com.arquitetura.senac.exception.LivrariaException;
 import com.arquitetura.senac.dto.EmprestimoDto;
-import com.arquitetura.senac.dto.UsuarioResponse;
 import com.arquitetura.senac.entity.Emprestimo;
 import com.arquitetura.senac.entity.Livro;
 import com.arquitetura.senac.enuns.Status;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.arquitetura.senac.enuns.Status.INDISPONIVEL;
