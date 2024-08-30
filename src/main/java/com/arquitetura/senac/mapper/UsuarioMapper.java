@@ -13,6 +13,8 @@ public interface UsuarioMapper {
 
     Usuario toUsuario(UsuarioRequest dto);
 
+    Usuario toUsuario(UsuarioResponse usuarioResponse);
+
     UsuarioResponse toResponse(UsuarioRequest dto);
 
     UsuarioResponse toResponse(Usuario entity);
