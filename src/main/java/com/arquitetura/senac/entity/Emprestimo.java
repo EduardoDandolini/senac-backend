@@ -1,8 +1,11 @@
 package com.arquitetura.senac.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -13,15 +16,17 @@ import java.util.Date;
 @Entity
 public class Emprestimo extends BaseEntity {
 
-    private Date dtEmprestimo;
+    private LocalDate dtEmprestimo;
 
-    private Date dtEntregaLivro;
+    private LocalDate dtEntregaLivro;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinColumn(name= "livro_id")
     private Livro livro;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 

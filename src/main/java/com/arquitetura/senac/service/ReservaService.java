@@ -7,7 +7,6 @@ import com.arquitetura.senac.entity.Reserva;
 import com.arquitetura.senac.enuns.Status;
 import com.arquitetura.senac.repository.EmprestimoRepository;
 import com.arquitetura.senac.repository.LivroRepository;
-import com.arquitetura.senac.repository.ReservaRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,8 +29,7 @@ public class ReservaService {
             emprestimo.ifPresent(e -> {
                 throw new IllegalStateException("Livro indisponível. Será devolvido dia: " + e.getDtEntregaLivro());
             });
-    }
-
+        }
         return null;
     }
 }
