@@ -9,8 +9,8 @@ public record LivroDto(
         @NotBlank(message = "Nome é obrigatório")
         String nome,
 
-        @NotNull(message = "Autor ID é obrigatório")
-        Long autorId,
+//        @NotNull(message = "Autor ID é obrigatório")
+//        Long autorId,
 
         @NotBlank(message = "Editora é obrigatória")
         String editora,
@@ -18,7 +18,6 @@ public record LivroDto(
         @NotBlank(message = "Gênero é obrigatório")
         String genero,
 
-        @NotNull(message = "Status é obrigatório")
         Status status
 ) {
 }

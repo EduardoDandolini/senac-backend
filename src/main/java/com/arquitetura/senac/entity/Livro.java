@@ -1,6 +1,7 @@
 package com.arquitetura.senac.entity;
 
 import com.arquitetura.senac.enuns.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,9 +29,11 @@ public class Livro extends BaseEntity {
     private Status status;
 
     @OneToMany(mappedBy = "livro")
+    @JsonIgnore
     private List<Emprestimo> emprestimos;
 
     @OneToMany(mappedBy = "livro")
+    @JsonIgnore
     private List<Reserva> reservas;
 
 }

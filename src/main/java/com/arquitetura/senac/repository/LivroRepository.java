@@ -9,6 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Long> {
-    Optional<Livro> findByStatus(Status status);
 
 }

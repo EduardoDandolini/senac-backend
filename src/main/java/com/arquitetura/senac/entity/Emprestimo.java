@@ -20,12 +20,12 @@ public class Emprestimo extends BaseEntity {
 
     private LocalDate dtEntregaLivro;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JsonIgnore
     @JoinColumn(name= "livro_id")
     private Livro livro;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JsonIgnore
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;

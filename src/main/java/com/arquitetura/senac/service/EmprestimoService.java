@@ -9,6 +9,7 @@ import com.arquitetura.senac.enuns.Status;
 import com.arquitetura.senac.mapper.UsuarioMapper;
 import com.arquitetura.senac.repository.EmprestimoRepository;
 import com.arquitetura.senac.repository.LivroRepository;
+import com.arquitetura.senac.repository.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.arquitetura.senac.enuns.Status.INDISPONIVEL;
+
 @Service
 @RequiredArgsConstructor
 public class EmprestimoService {
@@ -27,7 +30,7 @@ public class EmprestimoService {
     private final EmprestimoRepository repository;
 
     @Autowired
-    private UsuarioService usuarioService;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private LivroService livroService;
@@ -38,15 +41,14 @@ public class EmprestimoService {
 
     public Emprestimo emprestarLivro(EmprestimoDto dto) {
         Livro livro = livroService.findById(dto.idLivro());
-        if(!isLivroEmprestado(livro)) {
+        if(isLivroEmprestado(livro)) {
             throw new LivrariaException("O livro já está no registro de outra pessoa");
         }
 
         Emprestimo emprestimo = Emprestimo.builder()
                 .dtEmprestimo(dto.dtEmprestimo())
-                .dtEmprestimo(dto.dtEmprestimo())
                 .dtEntregaLivro(dto.dtEntregaLivro())
-                .usuario(mapper.toUsuario(usuarioService.findById(dto.idUsuario())))
+                .usuario(usuarioRepository.findById(dto.idUsuario()).orElseThrow(() -> new EntityNotFoundException("Não encontrado")))
                 .livro(livro)
                 .valorEmprestimo(dto.valorEmprestimo())
                 .taxaDeJuro(0.05)
@@ -88,7 +90,7 @@ public class EmprestimoService {
                 .dtEmprestimo(dto.dtEmprestimo())
                 .dtEmprestimo(dto.dtEmprestimo())
                 .dtEntregaLivro(dto.dtEntregaLivro())
-                .usuario(mapper.toUsuario(usuarioService.findById(dto.idUsuario())))
+                .usuario(usuarioRepository.findById(dto.idUsuario()).orElseThrow(() -> new EntityNotFoundException("Não encontrado")))
                 .livro(livroService.findById(dto.idLivro()))
                 .valorEmprestimo(dto.valorEmprestimo())
                 .build();
@@ -105,7 +107,7 @@ public class EmprestimoService {
     }
 
     public boolean isLivroEmprestado(Livro livro) {
-        return livro.getStatus() == Status.INDISPONIVEL;
+        return Status.valueOf(livro.getStatus().name()).equals(INDISPONIVEL);
 
     }
 }
