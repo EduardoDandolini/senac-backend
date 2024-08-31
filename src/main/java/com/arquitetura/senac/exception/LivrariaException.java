@@ -1,4 +1,4 @@
-package com.arquitetura.senac.Exception;
+package com.arquitetura.senac.exception;
 
 public class LivrariaException extends RuntimeException{
     private static final long serialVersionUID = 1L;
