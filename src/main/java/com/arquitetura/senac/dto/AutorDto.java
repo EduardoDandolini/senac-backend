@@ -17,5 +17,5 @@ public record AutorDto(
         @Email(message = "Email deve ser válido")
         @NotBlank(message = "Email é obrigatório")
         String email
-) {
-}
+)
+{}

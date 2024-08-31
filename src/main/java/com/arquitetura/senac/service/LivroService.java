@@ -1,7 +1,9 @@
 package com.arquitetura.senac.service;
 
 import com.arquitetura.senac.dto.LivroDto;
+import com.arquitetura.senac.entity.Autor;
 import com.arquitetura.senac.entity.Livro;
+import com.arquitetura.senac.repository.AutorRepository;
 import com.arquitetura.senac.repository.LivroRepository;
 import com.arquitetura.senac.enuns.Status;
 import jakarta.persistence.EntityNotFoundException;
@@ -24,11 +26,14 @@ import java.util.List;
 public class LivroService {
 
     private final LivroRepository repository;
+    private final AutorRepository autorRepository;
+
+
 
     public Livro save(LivroDto dto) {
         Livro livro = Livro.builder()
                 .nome(dto.nome())
-               // .autor(Autor.builder().id(dto.autorId()).build())
+                .autor(autorRepository.findById(dto.autorId()).orElseThrow(() -> new EntityNotFoundException("Não encontrado")))
                 .editora(dto.editora())
                 .genero(dto.genero())
                 .status(Status.DISPONIVEL)
@@ -50,7 +55,7 @@ public class LivroService {
                 .orElseThrow(() -> new EntityNotFoundException("Livro não encontrado"));
 
         livro.setNome(dto.nome());
-      //  livro.setAutor(Autor.builder().id(dto.autorId()).build());
+
         livro.setEditora(dto.editora());
         livro.setGenero(dto.genero());
         livro.setStatus(Status.valueOf(dto.status().name()));
