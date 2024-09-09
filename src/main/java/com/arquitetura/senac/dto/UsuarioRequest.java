@@ -1,5 +1,7 @@
 package com.arquitetura.senac.dto;
 
+import com.arquitetura.senac.enuns.Roles;
+
 import java.time.LocalDate;
 
 public record UsuarioRequest(
@@ -9,6 +11,7 @@ public record UsuarioRequest(
     String cpf,
     LocalDate dataDeNascimento,
     String endereco,
-    String telefone
+    String telefone,
+    Roles roles
 ) {
 }

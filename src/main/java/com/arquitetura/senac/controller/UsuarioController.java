@@ -16,7 +16,7 @@ public class UsuarioController {
 
     private final UsuarioService service;
 
-    @PostMapping
+    @PostMapping("/salvar")
     @ResponseStatus(HttpStatus.CREATED)
     public UsuarioResponse save(@RequestBody UsuarioRequest request) {
        return service.save(request);
